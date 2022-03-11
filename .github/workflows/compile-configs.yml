@@ -1,10 +1,7 @@
 name: Build Configs
 
 on:
-  push:
-    tags:
-      - "v*.*.*"
-
+  release:
   workflow_dispatch:
 
 jobs:
