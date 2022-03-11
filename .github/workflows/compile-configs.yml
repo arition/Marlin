@@ -51,7 +51,7 @@ jobs:
     - name: Rename build artifact
       run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.build_configs.outputs.filename }}
   Build-BLTouch:
@@ -108,7 +108,7 @@ jobs:
     - name: Rename build artifact
       run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.build_configs.outputs.filename }}
   Build-Manual-Mesh:
@@ -160,7 +160,7 @@ jobs:
     - name: Rename build artifact
       run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.build_configs.outputs.filename }}
   Build-UBL-BLTouch:
@@ -217,7 +217,7 @@ jobs:
     - name: Rename build artifact
       run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.build_configs.outputs.filename }}
   Build-UBL-NoProbe:
@@ -269,6 +269,6 @@ jobs:
     - name: Rename build artifact
       run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-        uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@v1
       with:
         files: ${{ steps.build_configs.outputs.filename }}
