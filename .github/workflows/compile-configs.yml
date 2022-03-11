@@ -1,8 +1,9 @@
 name: Build Configs
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - "v*.*.*"
 
   workflow_dispatch:
 
@@ -50,20 +51,12 @@ jobs:
       env:
         BOARD: ${{ matrix.board }}
         VERSION: ${{ env.RELEASE_VERSION }}
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Rename build artifact
+      run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: temp/build.bin
-        asset_name: ${{ steps.build_configs.outputs.filename }}
-        asset_content_type: application/x-binary
+        files: ${{ steps.build_configs.outputs.filename }}
   Build-BLTouch:
     name: Build BL-Touch Files
     runs-on: ubuntu-latest
@@ -115,20 +108,12 @@ jobs:
         GRID: ${{ matrix.grid }}
         HS: ${{ matrix.highspeed }}
         VERSION: ${{ env.RELEASE_VERSION }}
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Rename build artifact
+      run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: temp/build.bin
-        asset_name: ${{ steps.build_configs.outputs.filename }}
-        asset_content_type: application/x-binary
+        files: ${{ steps.build_configs.outputs.filename }}
   Build-Manual-Mesh:
     name: Build Manual-Mesh Files
     runs-on: ubuntu-latest
@@ -175,20 +160,12 @@ jobs:
         BOARD: ${{ matrix.board }}
         GRID: ${{ matrix.grid }}
         VERSION: ${{ env.RELEASE_VERSION }}
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Rename build artifact
+      run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: temp/build.bin
-        asset_name: ${{ steps.build_configs.outputs.filename }}
-        asset_content_type: application/x-binary
+        files: ${{ steps.build_configs.outputs.filename }}
   Build-UBL-BLTouch:
     name: Build BL-Touch UBL Files
     runs-on: ubuntu-latest
@@ -240,20 +217,12 @@ jobs:
         GRID: ${{ matrix.grid }}
         HS: ${{ matrix.highspeed }}
         VERSION: ${{ env.RELEASE_VERSION }}
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Rename build artifact
+      run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: temp/build.bin
-        asset_name: ${{ steps.build_configs.outputs.filename }}
-        asset_content_type: application/x-binary
+        files: ${{ steps.build_configs.outputs.filename }}
   Build-UBL-NoProbe:
     name: Build NoProbe UBL Files
     runs-on: ubuntu-latest
@@ -300,17 +269,9 @@ jobs:
         BOARD: ${{ matrix.board }}
         GRID: ${{ matrix.grid }}
         VERSION: ${{ env.RELEASE_VERSION }}
-    - name: Get release
-      id: get_release
-      uses: bruceadams/get-release@v1.2.2
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
+    - name: Rename build artifact
+      run: mv temp/build.bin ${{ steps.build_configs.outputs.filename }}
     - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ steps.get_release.outputs.upload_url }}
-        asset_path: temp/build.bin
-        asset_name: ${{ steps.build_configs.outputs.filename }}
-        asset_content_type: application/x-binary
+        files: ${{ steps.build_configs.outputs.filename }}
